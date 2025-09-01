@@ -1,22 +1,35 @@
 n_pacientes = int(input("Ingrese el numero de pacientes: "))
-nivel_hemoglobina = float(input("Ingrese el nivel de su hemoglobina: "))
-genero = int(input("Ingrese su género (1 para masculino, 2 para femenino): "))
-datos_pacientes = [2, n_pacientes]
+
+hombres_alto = hombres_normal = hombres_bajo = 0
+mujeres_alto = mujeres_normal = mujeres_bajo = 0
+
 for i in range(n_pacientes):
+    print(f"\nPaciente {i + 1}:")
+    nivel_hemoglobina = float(input("Ingrese el nivel de su hemoglobina: "))
+    genero = int(input("Ingrese su género (1 para masculino, 2 para femenino): "))
+
+    diagnostico = ""
+
     if genero == 1:
         if nivel_hemoglobina < 12.2:
-            print("Su nivel de hemoglobina es bajo.")
-        if 12.2 <= nivel_hemoglobina <= 16.6:
-            print("Su nivel de hemoglobina es normal.")
-        if nivel_hemoglobina > 16.6:
-            print("Su nivel de hemoglobina es alto.")
+            hombres_bajo += 1
+        elif 12.2 <= nivel_hemoglobina <= 16.6:
+            hombres_normal += 1
+        else:
+            hombres_alto += 1
     elif genero == 2:
         if nivel_hemoglobina < 12.6:
-            print("Su nivel de hemoglobina es bajo.")
-        if 12.6 <= nivel_hemoglobina <= 15.0:
-            print("Su nivel de hemoglobina es normal.")
-        if nivel_hemoglobina > 15.0: 
-            print("Su nivel de hemoglobina es alto.")
+            mujeres_bajo += 1
+        elif 12.6 <= nivel_hemoglobina <= 15.0:
+            mujeres_normal += 1
+        else: 
+            mujeres_alto += 1
     else:
         print("No es posible generar la alerta")
-    
+        
+print(f"Hombres con hemoglobina baja: {hombres_bajo}")
+print(f"Hombres con hemoglobina normal: {hombres_normal}")
+print(f"Hombres con hemoglobina alta: {hombres_alto}")
+print(f"Mujeres con hemoglobina baja: {mujeres_bajo}")
+print(f"Mujeres con hemoglobina normal: {mujeres_normal}")
+print(f"Mujeres con hemoglobina alta: {mujeres_alto}")
